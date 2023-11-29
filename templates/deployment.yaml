@@ -1,0 +1,45 @@
+# templates/deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.dataBackend.name }}
+  labels:
+    app: {{ .Values.dataBackend.name }}
+spec:
+  replicas: {{ .Values.dataBackend.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.dataBackend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.dataBackend.name }}
+    spec:
+      containers:
+      - name: {{ .Values.dataBackend.name }}
+        image: {{ .Values.dataBackend.image }}
+        ports:
+        - containerPort: {{ .Values.dataBackend.port }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.dataFrontend.name }}
+  labels:
+    app: {{ .Values.dataFrontend.name }}
+spec:
+  replicas: {{ .Values.dataFrontend.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.dataFrontend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.dataFrontend.name }}
+    spec:
+      containers:
+      - name: {{ .Values.dataFrontend.name }}
+        image: {{ .Values.dataFrontend.image }}
+        ports:
+        - containerPort: {{ .Values.dataFrontend.port }}

@@ -1,0 +1,25 @@
+# templates/service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.dataFrontend.name }}-svc
+spec:
+  selector:
+    app: {{ .Values.dataFrontend.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.dataFrontend.port }}
+      targetPort: {{ .Values.dataFrontend.port }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.dataBackend.name }}-svc
+spec:
+  selector:
+    app: {{ .Values.dataBackend.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.dataBackend.port }}
+      targetPort: {{ .Values.dataBackend.port }}

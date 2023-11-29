@@ -1,0 +1,13 @@
+# values.yaml
+
+dataBackend:
+  name: mifugo-data-backend
+  image: docker.io/nziokah/mifugo-data-backend:1.2
+  port: 5000
+  replicas: 1
+
+dataFrontend:
+  name: mifugo-data-frontend
+  image: docker.io/nziokah/mifugo-data-frontend:1.2
+  port: 3000
+  replicas: 1

@@ -1,0 +1,6 @@
+# Chart.yaml
+
+apiVersion: v1
+name: mifugo-chart
+description: A Helm chart for Mifugo Data
+version: 0.1.0
